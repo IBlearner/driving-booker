@@ -3,7 +3,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { telHref } from "@/config";
 import { Icon } from "@/components/Icon";
 
-const heroCar = "/images/hero-car.png";
+const heroCar = "/images/driving.png";
 
 export function LandingPage() {
   const { t } = useLanguage();
