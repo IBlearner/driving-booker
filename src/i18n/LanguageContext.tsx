@@ -9,7 +9,7 @@ function getInitialLanguage(): Language {
   if (saved && saved in translations) return saved;
   const browser = window.navigator.language.toLowerCase();
   if (browser.startsWith("vi")) return "vi";
-  if (browser.startsWith("zh")) return "zh";
+  if (browser.startsWith("zh")) return "cn";
   return "en";
 }
 
