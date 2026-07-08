@@ -1,0 +1,11 @@
+// Responsive breakpoints (mobile-first)
+$breakpoints: (
+  "tablet": 640px,
+  "desktop": 1024px,
+  "wide": 1280px,
+);
+
+// Layout
+$container-max: 1200px;
+$radius: 14px;
+$radius-sm: 10px;

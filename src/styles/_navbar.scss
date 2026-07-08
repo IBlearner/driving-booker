@@ -1,0 +1,289 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+// Top utility bar with prominent contact details
+.contactbar {
+  background-color: var(--color-primary-dark);
+  color: var(--color-primary-contrast);
+  font-size: 0.85rem;
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    padding-block: 0.55rem;
+
+    @include m.from("tablet") {
+      justify-content: space-between;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 1.25rem;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+
+    .material-icons {
+      font-size: 1.05rem;
+      color: var(--color-accent);
+    }
+  }
+
+  &__area {
+    display: none;
+
+    @include m.from("desktop") {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.85;
+
+      .material-icons {
+        font-size: 1.05rem;
+      }
+    }
+  }
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.85rem;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--color-text);
+  }
+
+  &__logo {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+
+    .material-icons {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__links {
+    display: none;
+    align-items: center;
+    gap: 0.35rem;
+
+    @include m.from("desktop") {
+      display: flex;
+    }
+  }
+
+  &__link {
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    font-weight: 500;
+    color: var(--color-muted);
+    transition: color 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+      color: var(--color-text);
+      background-color: var(--color-surface-alt);
+    }
+
+    &.is-active {
+      color: var(--color-primary);
+      background-color: var(--color-surface-alt);
+      font-weight: 600;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__cta {
+    display: none;
+
+    @include m.from("tablet") {
+      display: inline-flex;
+    }
+  }
+
+  &__toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-surface);
+    cursor: pointer;
+
+    @include m.from("desktop") {
+      display: none;
+    }
+  }
+}
+
+// Mobile drawer
+.mobile-menu {
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  overflow: hidden;
+
+  @include m.from("desktop") {
+    display: none;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-block: 0.75rem 1.25rem;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-weight: 500;
+    color: var(--color-text);
+
+    &.is-active {
+      color: var(--color-primary);
+      background-color: var(--color-surface-alt);
+    }
+
+    .material-icons {
+      color: var(--color-primary);
+    }
+  }
+
+  &__cta {
+    margin-top: 0.75rem;
+  }
+}
+
+// Language switcher
+.lang {
+  position: relative;
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background-color: var(--color-surface);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+
+    .material-icons {
+      font-size: 1.2rem;
+      color: var(--color-primary);
+    }
+
+    .lang__chevron {
+      font-size: 1.1rem;
+      color: var(--color-muted);
+    }
+  }
+
+  &__current {
+    display: none;
+
+    @include m.from("tablet") {
+      display: inline;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    min-width: 180px;
+    padding: 0.4rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-md);
+    z-index: 60;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.95rem;
+
+    &:hover {
+      background-color: var(--color-surface-alt);
+    }
+
+    &.is-active {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .lang__native {
+      color: var(--color-muted);
+      font-size: 0.85rem;
+      margin-left: auto;
+    }
+
+    &.is-active .lang__native {
+      color: var(--color-primary);
+    }
+  }
+}
