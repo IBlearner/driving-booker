@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { translations, type Language } from "./translations";
 
-const STORAGE_KEY = "drivewise-lang";
+const STORAGE_KEY = "lamdriving-lang";
 
 function getInitialLanguage(): Language {
   if (typeof window === "undefined") return "en";

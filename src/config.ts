@@ -2,9 +2,9 @@
 // Values come from Vite env vars (see .env / .env.example).
 
 export const siteConfig = {
-  instructorName: import.meta.env.VITE_INSTRUCTOR_NAME ?? "David Nguyen",
+  instructorName: import.meta.env.VITE_INSTRUCTOR_NAME ?? "Duc Tinh Lam",
   phone: import.meta.env.VITE_CONTACT_PHONE ?? "+61 400 123 456",
-  email: import.meta.env.VITE_CONTACT_EMAIL ?? "hello@drivewise.example",
+  email: import.meta.env.VITE_CONTACT_EMAIL ?? "hello@lamdriving.example",
   serviceArea: import.meta.env.VITE_SERVICE_AREA ?? "Brisbane, QLD",
   businessName: "Lam Driving School",
   yearsExperience: Number(import.meta.env.VITE_YEARS_EXPERIENCE ?? 12),
