@@ -55,10 +55,8 @@ export function BookNowPage() {
   function validate(): Errors {
     const next: Errors = {};
     if (!form.name.trim()) next.name = t.book.errName;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      next.email = t.book.errEmail;
-    if (form.phone.replace(/[^\d]/g, "").length < 7)
-      next.phone = t.book.errPhone;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = t.book.errEmail;
+    if (form.phone.replace(/[^\d]/g, "").length < 7) next.phone = t.book.errPhone;
     if (!form.experience) next.experience = t.book.errExperience;
     if (!form.hasCar) next.hasCar = t.book.errHasCar;
     if (!form.date) next.date = t.book.errDate;
@@ -76,9 +74,7 @@ export function BookNowPage() {
 
     setStatus("submitting");
     try {
-      const experienceLabel =
-        experienceOptions.find((o) => o.value === form.experience)?.label ??
-        form.experience;
+      const experienceLabel = experienceOptions.find((o) => o.value === form.experience)?.label ?? form.experience;
       const res = await sendBooking({
         name: form.name,
         email: form.email,
@@ -106,36 +102,28 @@ export function BookNowPage() {
 
   // Success screen
   if (result) {
-    const message =
-      result === "sent"
-        ? format(t.book.successText, { name: form.name })
-        : format(t.book.successFallback, { name: form.name });
+    const message = result === "sent" ? format(t.book.successText, { name: form.name }) : format(t.book.successFallback, { name: form.name });
     return (
       <>
         <PageHeader title={t.book.headerTitle} lead={t.book.headerLead} />
         <section className="section">
           <div className="container">
-            <div
-              className="form-card"
-              style={{ maxWidth: 640, margin: "0 auto" }}
-            >
-              <div
-                className="alert alert--success"
-                style={{ marginBottom: "1.25rem" }}
-              >
+            <div className="form-card" style={{ maxWidth: 640, margin: "0 auto" }}>
+              <div className="alert alert--success" style={{ marginBottom: "1.25rem" }}>
                 <Icon name="check_circle" />
                 <div>
-                  <strong style={{ display: "block", marginBottom: 4 }}>
+                  <strong
+                    style={{
+                      display: "block",
+                      marginBottom: 4,
+                    }}
+                  >
                     {t.book.successTitle}
                   </strong>
                   {message}
                 </div>
               </div>
-              <button
-                type="button"
-                className="btn btn--primary"
-                onClick={reset}
-              >
+              <button type="button" className="btn btn--primary" onClick={reset}>
                 <Icon name="add" />
                 {t.book.another}
               </button>
@@ -157,16 +145,16 @@ export function BookNowPage() {
             <div className="form-card">
               <h2
                 className="section__title"
-                style={{ fontSize: "1.4rem", marginBottom: "1.5rem" }}
+                style={{
+                  fontSize: "1.4rem",
+                  marginBottom: "1.5rem",
+                }}
               >
                 {t.book.formTitle}
               </h2>
 
               {status === "error" && (
-                <div
-                  className="alert alert--error"
-                  style={{ marginBottom: "1.25rem" }}
-                >
+                <div className="alert alert--error" style={{ marginBottom: "1.25rem" }}>
                   <Icon name="error" />
                   <span>{t.book.errorText}</span>
                 </div>
@@ -174,76 +162,21 @@ export function BookNowPage() {
 
               <form className="form" onSubmit={handleSubmit} noValidate>
                 <div className="form__grid">
-                  <Field
-                    label={t.book.name}
-                    required
-                    requiredLabel={t.book.required}
-                    error={errors.name}
-                  >
-                    <input
-                      className={`field__control${
-                        errors.name ? " has-error" : ""
-                      }`}
-                      type="text"
-                      autoComplete="name"
-                      placeholder={t.book.namePlaceholder}
-                      value={form.name}
-                      onChange={(e) => update("name", e.target.value)}
-                    />
+                  <Field label={t.book.name} required requiredLabel={t.book.required} error={errors.name}>
+                    <input className={`field__control${errors.name ? " has-error" : ""}`} type="text" autoComplete="name" placeholder={t.book.namePlaceholder} value={form.name} onChange={(e) => update("name", e.target.value)} />
                   </Field>
 
-                  <Field
-                    label={t.book.phone}
-                    required
-                    requiredLabel={t.book.required}
-                    error={errors.phone}
-                  >
-                    <input
-                      className={`field__control${
-                        errors.phone ? " has-error" : ""
-                      }`}
-                      type="tel"
-                      autoComplete="tel"
-                      placeholder={t.book.phonePlaceholder}
-                      value={form.phone}
-                      onChange={(e) => update("phone", e.target.value)}
-                    />
+                  <Field label={t.book.phone} required requiredLabel={t.book.required} error={errors.phone}>
+                    <input className={`field__control${errors.phone ? " has-error" : ""}`} type="tel" autoComplete="tel" placeholder={t.book.phonePlaceholder} value={form.phone} onChange={(e) => update("phone", e.target.value)} />
                   </Field>
                 </div>
 
-                <Field
-                  label={t.book.email}
-                  required
-                  requiredLabel={t.book.required}
-                  error={errors.email}
-                  full
-                >
-                  <input
-                    className={`field__control${
-                      errors.email ? " has-error" : ""
-                    }`}
-                    type="email"
-                    autoComplete="email"
-                    placeholder={t.book.emailPlaceholder}
-                    value={form.email}
-                    onChange={(e) => update("email", e.target.value)}
-                  />
+                <Field label={t.book.email} required requiredLabel={t.book.required} error={errors.email} full>
+                  <input className={`field__control${errors.email ? " has-error" : ""}`} type="email" autoComplete="email" placeholder={t.book.emailPlaceholder} value={form.email} onChange={(e) => update("email", e.target.value)} />
                 </Field>
 
-                <Field
-                  label={t.book.experience}
-                  required
-                  requiredLabel={t.book.required}
-                  error={errors.experience}
-                  full
-                >
-                  <select
-                    className={`field__control${
-                      errors.experience ? " has-error" : ""
-                    }`}
-                    value={form.experience}
-                    onChange={(e) => update("experience", e.target.value)}
-                  >
+                <Field label={t.book.experience} required requiredLabel={t.book.required} error={errors.experience} full>
+                  <select className={`field__control${errors.experience ? " has-error" : ""}`} value={form.experience} onChange={(e) => update("experience", e.target.value)}>
                     <option value="" disabled>
                       {t.book.experienceSelect}
                     </option>
@@ -256,26 +189,22 @@ export function BookNowPage() {
                 </Field>
 
                 {/* Access to a car */}
-                <Field
-                  label={t.book.hasCar}
-                  required
-                  requiredLabel={t.book.required}
-                  error={errors.hasCar}
-                  full
-                >
+                <Field label={t.book.hasCar} required requiredLabel={t.book.required} error={errors.hasCar} full>
                   <div className="choice-group">
                     {[
-                      { value: "yes", label: t.book.hasCarYes, icon: "check" },
-                      { value: "no", label: t.book.hasCarNo, icon: "close" },
+                      {
+                        value: "yes",
+                        label: t.book.hasCarYes,
+                        icon: "check",
+                      },
+                      {
+                        value: "no",
+                        label: t.book.hasCarNo,
+                        icon: "close",
+                      },
                     ].map((opt) => (
                       <label className="choice" key={opt.value}>
-                        <input
-                          type="radio"
-                          name="hasCar"
-                          value={opt.value}
-                          checked={form.hasCar === opt.value}
-                          onChange={(e) => update("hasCar", e.target.value)}
-                        />
+                        <input type="radio" name="hasCar" value={opt.value} checked={form.hasCar === opt.value} onChange={(e) => update("hasCar", e.target.value)} />
                         <span className="choice__box">
                           <Icon name={opt.icon} />
                           {opt.label}
@@ -286,18 +215,9 @@ export function BookNowPage() {
                 </Field>
 
                 {/* Date */}
-                <Field
-                  label={t.book.date}
-                  required
-                  requiredLabel={t.book.required}
-                  error={errors.date}
-                  hint={t.book.dateHint}
-                  full
-                >
+                <Field label={t.book.date} required requiredLabel={t.book.required} error={errors.date} hint={t.book.dateHint} full>
                   <input
-                    className={`field__control${
-                      errors.date ? " has-error" : ""
-                    }`}
+                    className={`field__control${errors.date ? " has-error" : ""}`}
                     type="date"
                     min={todayISO()}
                     value={form.date}
@@ -309,13 +229,7 @@ export function BookNowPage() {
                 </Field>
 
                 {/* Time slots */}
-                <Field
-                  label={t.book.time}
-                  required
-                  requiredLabel={t.book.required}
-                  error={errors.time}
-                  full
-                >
+                <Field label={t.book.time} required requiredLabel={t.book.required} error={errors.time} full>
                   {!form.date ? (
                     <p className="time-empty">{t.book.timeHintSelect}</p>
                   ) : slots.length === 0 ? (
@@ -323,15 +237,7 @@ export function BookNowPage() {
                   ) : (
                     <div className="time-grid">
                       {slots.map((slot) => (
-                        <button
-                          type="button"
-                          key={slot}
-                          className={`time-slot${
-                            form.time === slot ? " is-selected" : ""
-                          }`}
-                          onClick={() => update("time", slot)}
-                          aria-pressed={form.time === slot}
-                        >
+                        <button type="button" key={slot} className={`time-slot${form.time === slot ? " is-selected" : ""}`} onClick={() => update("time", slot)} aria-pressed={form.time === slot}>
                           {formatTime(slot)}
                         </button>
                       ))}
@@ -340,19 +246,10 @@ export function BookNowPage() {
                 </Field>
 
                 <Field label={t.book.notes} full>
-                  <textarea
-                    className="field__control"
-                    placeholder={t.book.notesPlaceholder}
-                    value={form.notes}
-                    onChange={(e) => update("notes", e.target.value)}
-                  />
+                  <textarea className="field__control" placeholder={t.book.notesPlaceholder} value={form.notes} onChange={(e) => update("notes", e.target.value)} />
                 </Field>
 
-                <button
-                  type="submit"
-                  className="btn btn--primary btn--block"
-                  disabled={status === "submitting"}
-                >
+                <button type="submit" className="btn btn--primary btn--block" disabled={status === "submitting"}>
                   {status === "submitting" ? (
                     t.book.submitting
                   ) : (
@@ -369,7 +266,12 @@ export function BookNowPage() {
             <aside className="booking-aside">
               <div className="info-card info-card--primary">
                 <h2 className="info-card__title">{t.book.asideTitle}</h2>
-                <p style={{ opacity: 0.9, marginBottom: "1.1rem" }}>
+                <p
+                  style={{
+                    opacity: 0.9,
+                    marginBottom: "1.1rem",
+                  }}
+                >
                   {t.book.asideText}
                 </p>
                 <div className="info-card__list">
@@ -423,15 +325,7 @@ interface FieldProps {
   full?: boolean;
 }
 
-function Field({
-  label,
-  children,
-  required,
-  requiredLabel,
-  error,
-  hint,
-  full,
-}: FieldProps) {
+function Field({ label, children, required, requiredLabel, error, hint, full }: FieldProps) {
   return (
     <div className={`field${full ? " field--full" : ""}`}>
       <label className="field__label">

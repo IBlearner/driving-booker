@@ -14,15 +14,27 @@ export function LandingPage() {
       title: t.home.feature1Title,
       text: t.home.feature1Text,
     },
-    { icon: "event", title: t.home.feature2Title, text: t.home.feature2Text },
+    {
+      icon: "event",
+      title: t.home.feature2Title,
+      text: t.home.feature2Text,
+    },
     {
       icon: "directions_car",
       title: t.home.feature3Title,
       text: t.home.feature3Text,
     },
     { icon: "map", title: t.home.feature4Title, text: t.home.feature4Text },
-    { icon: "tune", title: t.home.feature5Title, text: t.home.feature5Text },
-    { icon: "savings", title: t.home.feature6Title, text: t.home.feature6Text },
+    {
+      icon: "tune",
+      title: t.home.feature5Title,
+      text: t.home.feature5Text,
+    },
+    {
+      icon: "savings",
+      title: t.home.feature6Title,
+      text: t.home.feature6Text,
+    },
   ];
 
   const steps = [
@@ -73,13 +85,7 @@ export function LandingPage() {
           </div>
 
           <div className="hero__media">
-            <img
-              className="hero__image"
-              src={heroCar}
-              alt="Driving school car with a rooftop learner sign parked on a sunny street"
-              width={640}
-              height={460}
-            />
+            <img className="hero__image" src={heroCar} alt="Driving school car with a rooftop learner sign parked on a sunny street" width={640} height={460} />
             <div className="hero__badge">
               <Icon name="verified_user" />
               <div>

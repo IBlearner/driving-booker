@@ -67,16 +67,10 @@ export function InformationPage() {
         <div className="container">
           <div className="about">
             <div className="about__media">
-              <img
-                src="/images/hero-car.png"
-                alt={t.info.aboutTitle}
-                loading="lazy"
-              />
+              <img src="/images/hero-car.png" alt={t.info.aboutTitle} loading="lazy" />
             </div>
             <div className="about__body">
-              <h2 className="section__title">
-                {format(t.info.aboutTitle, vars)}
-              </h2>
+              <h2 className="section__title">{format(t.info.aboutTitle, vars)}</h2>
               <p>{format(t.info.aboutP1, vars)}</p>
               <p>{format(t.info.aboutP2, vars)}</p>
               <p>{format(t.info.aboutP3, vars)}</p>

@@ -70,8 +70,7 @@ export function Footer() {
 
       <div className="footer__bottom">
         <div className="container">
-          &copy; {new Date().getFullYear()} {siteConfig.businessName}.{" "}
-          {t.footer.rights}
+          &copy; {new Date().getFullYear()} {siteConfig.businessName}. {t.footer.rights}
         </div>
       </div>
     </footer>

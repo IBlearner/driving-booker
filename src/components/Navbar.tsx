@@ -33,14 +33,7 @@ export function Navbar() {
 
         <div className="navbar__links">
           {links.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === "/"}
-              className={({ isActive }) =>
-                `navbar__link${isActive ? " is-active" : ""}`
-              }
-            >
+            <NavLink key={link.to} to={link.to} end={link.to === "/"} className={({ isActive }) => `navbar__link${isActive ? " is-active" : ""}`}>
               {link.label}
             </NavLink>
           ))}
@@ -51,13 +44,7 @@ export function Navbar() {
           <Link to="/book" className="btn btn--primary navbar__cta">
             {t.nav.bookCta}
           </Link>
-          <button
-            type="button"
-            className="navbar__toggle"
-            aria-label={t.nav.menu}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-          >
+          <button type="button" className="navbar__toggle" aria-label={t.nav.menu} aria-expanded={open} onClick={() => setOpen((v) => !v)}>
             <Icon name={open ? "close" : "menu"} />
           </button>
         </div>
@@ -67,14 +54,7 @@ export function Navbar() {
         <div className="mobile-menu">
           <div className="container mobile-menu__inner">
             {links.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                end={link.to === "/"}
-                className={({ isActive }) =>
-                  `mobile-menu__link${isActive ? " is-active" : ""}`
-                }
-              >
+              <NavLink key={link.to} to={link.to} end={link.to === "/"} className={({ isActive }) => `mobile-menu__link${isActive ? " is-active" : ""}`}>
                 <Icon name={link.icon} />
                 {link.label}
               </NavLink>

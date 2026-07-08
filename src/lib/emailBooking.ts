@@ -17,9 +17,7 @@ export type BookingResult = "sent" | "fallback";
 // Sends the booking request via EmailJS when configured.
 // If EmailJS env vars are missing, resolves as "fallback" so the UI can
 // still show a confirmation (useful for local review without a provider).
-export async function sendBooking(
-  payload: BookingPayload
-): Promise<BookingResult> {
+export async function sendBooking(payload: BookingPayload): Promise<BookingResult> {
   if (!isEmailConfigured) {
     // Simulate a short network delay for a realistic UX.
     await new Promise((resolve) => setTimeout(resolve, 600));

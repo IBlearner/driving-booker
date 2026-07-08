@@ -29,14 +29,7 @@ export function LanguageSwitcher() {
 
   return (
     <div className="lang" ref={ref}>
-      <button
-        type="button"
-        className="lang__button"
-        onClick={() => setOpen((v) => !v)}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-        aria-label={t.nav.language}
-      >
+      <button type="button" className="lang__button" onClick={() => setOpen((v) => !v)} aria-haspopup="listbox" aria-expanded={open} aria-label={t.nav.language}>
         <Icon name="translate" />
         <span className="lang__current">{current?.native}</span>
         <Icon name="expand_more" className="lang__chevron" />
@@ -50,9 +43,7 @@ export function LanguageSwitcher() {
                 type="button"
                 role="option"
                 aria-selected={lang.code === language}
-                className={`lang__option${
-                  lang.code === language ? " is-active" : ""
-                }`}
+                className={`lang__option${lang.code === language ? " is-active" : ""}`}
                 onClick={() => {
                   setLanguage(lang.code);
                   setOpen(false);

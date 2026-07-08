@@ -1,12 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { translations, type Language } from "./translations";
 
 const STORAGE_KEY = "drivewise-lang";
@@ -29,9 +21,7 @@ interface LanguageContextValue {
   t: Dict;
 }
 
-const LanguageContext = createContext<LanguageContextValue | undefined>(
-  undefined
-);
+const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(getInitialLanguage);
@@ -45,16 +35,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = language;
   }, [language]);
 
-  const value = useMemo<LanguageContextValue>(
-    () => ({ language, setLanguage, t: translations[language] }),
-    [language, setLanguage]
-  );
+  const value = useMemo<LanguageContextValue>(() => ({ language, setLanguage, t: translations[language] }), [language, setLanguage]);
 
-  return (
-    <LanguageContext.Provider value={value}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
