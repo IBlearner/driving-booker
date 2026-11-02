@@ -1,0 +1,88 @@
+@use "mixins" as m;
+
+// Feature cards (home)
+.card-grid {
+  display: grid;
+  gap: 1.25rem;
+
+  @include m.from("tablet") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.from("desktop") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+
+  &__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background-color: var(--color-surface-alt);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+
+    .material-icons {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__text {
+    color: var(--color-muted);
+    font-size: 0.98rem;
+  }
+}
+
+// Steps (home)
+.steps {
+  display: grid;
+  gap: 1.25rem;
+
+  @include m.from("tablet") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.step {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+
+  &__num {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  &__text {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+}

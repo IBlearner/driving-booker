@@ -1,0 +1,61 @@
+@use "mixins" as m;
+
+// Information page: about the instructor
+.about {
+  display: grid;
+  gap: 2rem;
+
+  @include m.from("desktop") {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  &__body {
+    .section__title {
+      margin-bottom: 1.25rem;
+    }
+
+    p {
+      color: var(--color-muted);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+  }
+
+  &__card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+
+    .stats {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  &__card-title {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.tag-list {
+  display: grid;
+  gap: 0.7rem;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 500;
+
+    .material-icons {
+      font-size: 1.3rem;
+      color: var(--color-primary);
+    }
+  }
+}

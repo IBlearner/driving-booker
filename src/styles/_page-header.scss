@@ -1,0 +1,26 @@
+@use "mixins" as m;
+
+// Shared header band for sub-pages
+.page-header {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+
+  &__inner {
+    padding-block: 2.75rem;
+
+    @include m.from("desktop") {
+      padding-block: 4rem;
+    }
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 0.75rem;
+  }
+
+  &__lead {
+    max-width: 55ch;
+    opacity: 0.9;
+    font-size: 1.05rem;
+  }
+}

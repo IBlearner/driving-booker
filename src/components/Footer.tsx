@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { siteConfig, telHref, mailHref } from "@/config";
+import { navLinks } from "@/content";
 import { Icon } from "./Icon";
 
 export function Footer() {
@@ -22,24 +23,14 @@ export function Footer() {
         <div>
           <h2 className="footer__title">{t.footer.quickLinks}</h2>
           <ul className="footer__list">
-            <li>
-              <Link className="footer__link" to="/">
-                <Icon name="chevron_right" />
-                {t.nav.home}
-              </Link>
-            </li>
-            <li>
-              <Link className="footer__link" to="/information">
-                <Icon name="chevron_right" />
-                {t.nav.info}
-              </Link>
-            </li>
-            <li>
-              <Link className="footer__link" to="/book">
-                <Icon name="chevron_right" />
-                {t.nav.book}
-              </Link>
-            </li>
+            {navLinks.map((link) => (
+              <li key={link.to}>
+                <Link className="footer__link" to={link.to}>
+                  <Icon name="chevron_right" />
+                  {t.nav[link.id]}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 

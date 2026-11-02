@@ -1,0 +1,82 @@
+@use "mixins" as m;
+
+.footer {
+  background-color: var(--color-primary-dark);
+  color: var(--color-primary-contrast);
+  margin-top: auto;
+
+  &__inner {
+    display: grid;
+    gap: 2rem;
+    padding-block: 3rem 2rem;
+
+    @include m.from("tablet") {
+      grid-template-columns: 1.4fr 1fr 1fr;
+    }
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.85rem;
+  }
+
+  &__logo {
+    display: inline-grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background-color: var(--color-accent);
+    color: var(--color-accent-contrast);
+  }
+
+  &__desc {
+    opacity: 0.8;
+    font-size: 0.95rem;
+    max-width: 40ch;
+  }
+
+  &__title {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+  }
+
+  &__list {
+    display: grid;
+    gap: 0.65rem;
+    font-size: 0.95rem;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.9;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+
+    .material-icons {
+      font-size: 1.1rem;
+      color: var(--color-accent);
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-block: 1.25rem;
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.75;
+  }
+}

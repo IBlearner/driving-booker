@@ -27,10 +27,22 @@
   --font-heading: "Fraunces", Georgia, "Times New Roman", serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
 
+  // Shape
+  --radius: #{v.$radius};
+  --radius-sm: #{v.$radius-sm};
+  --radius-lg: #{v.$radius-lg};
+
   // Effects
   --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
   --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.1);
   --shadow-lg: 0 20px 50px rgba(16, 24, 40, 0.16);
+  --focus-ring: color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+// Chinese text needs a CJK-capable fallback; Fraunces and Inter have no Han glyphs.
+html:lang(zh) {
+  --font-heading: "Fraunces", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-body: "Inter", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
 }
 
 *,
@@ -46,6 +58,25 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .btn:hover,
+  .btn:active {
+    transform: none;
+  }
 }
 
 body {
@@ -91,15 +122,35 @@ button {
   color: inherit;
 }
 
-ul {
+ul,
+ol {
   list-style: none;
   padding: 0;
 }
 
+// Brand blue on light surfaces; amber on the dark ones (see --focus-color below).
 :focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 3px solid var(--focus-color, var(--color-primary));
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+.contactbar,
+.page-header,
+.cta-band,
+.footer,
+.info-card--primary {
+  --focus-color: var(--color-accent);
+}
+
+// Icon font: reserve a fixed square so the icon name never shows as text
+// and layout doesn't shift while the font loads.
+.material-icons {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .container {
@@ -118,11 +169,33 @@ ul {
   border: 0;
 }
 
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+  font-weight: 600;
+
+  &:focus {
+    top: 1rem;
+  }
+}
+
 .section {
-  padding-block: 3.5rem;
+  padding-block: 3rem;
 
   @include m.from("desktop") {
-    padding-block: 5.5rem;
+    padding-block: 4.5rem;
+  }
+
+  // Alternate surface so consecutive sections read as separate bands.
+  &--alt {
+    background-color: var(--color-surface);
+    border-block: 1px solid var(--color-border);
   }
 }
 

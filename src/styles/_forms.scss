@@ -26,6 +26,16 @@
   }
 }
 
+.form-card__title {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-card--narrow {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
 .form {
   display: grid;
   gap: 1.25rem;
@@ -65,7 +75,9 @@
     border: 1px solid var(--color-border);
     border-radius: v.$radius-sm;
     background-color: var(--color-surface);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
 
     &::placeholder {
       color: var(--color-muted);
@@ -75,7 +87,7 @@
     &:focus {
       outline: none;
       border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(18, 69, 126, 0.15);
+      box-shadow: 0 0 0 3px var(--focus-ring);
     }
 
     &:disabled {
@@ -85,6 +97,10 @@
 
     &.has-error {
       border-color: var(--color-error);
+    }
+
+    &:focus-visible {
+      outline: none;
     }
   }
 
@@ -200,6 +216,20 @@
   }
 }
 
+// The time group is only focused programmatically (to land on a validation error).
+div[role="group"]:focus {
+  outline: none;
+}
+
+// Honeypot field: off-screen so people never see it.
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .time-empty {
   color: var(--color-muted);
   font-size: 0.95rem;
@@ -224,6 +254,15 @@
     background-color: rgba(31, 138, 76, 0.12);
     color: var(--color-success);
     border: 1px solid rgba(31, 138, 76, 0.3);
+  }
+
+  &--spaced {
+    margin-bottom: 1.25rem;
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 4px;
   }
 
   &--error {
@@ -255,6 +294,11 @@
   &__title {
     font-size: 1.15rem;
     margin-bottom: 1rem;
+  }
+
+  &__text {
+    opacity: 0.9;
+    margin-bottom: 1.1rem;
   }
 
   &__list {

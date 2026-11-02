@@ -24,3 +24,12 @@ export const isEmailConfigured = Boolean(emailConfig.serviceId && emailConfig.te
 // Phone/email formatted for tel:/mailto: links
 export const telHref = `tel:${siteConfig.phone.replace(/\s+/g, "")}`;
 export const mailHref = `mailto:${siteConfig.email}`;
+
+// Values substituted into {placeholders} in translation strings.
+export const textVars = {
+  name: siteConfig.instructorName,
+  area: siteConfig.serviceArea,
+  business: siteConfig.businessName,
+  years: siteConfig.yearsExperience,
+  students: siteConfig.studentsPassed,
+};

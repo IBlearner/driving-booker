@@ -2,8 +2,15 @@
 @use "buttons";
 @use "navbar";
 @use "hero";
+@use "stats";
+@use "cards";
+@use "cta-band";
 @use "forms";
-@use "pages";
+@use "page-header";
+@use "about";
+@use "lessons";
+@use "faq";
+@use "footer";
 
 // App shell layout
 .app {

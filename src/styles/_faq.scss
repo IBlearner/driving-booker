@@ -1,0 +1,45 @@
+// FAQ, built on native <details> so it works without extra JavaScript.
+.faq {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 780px;
+
+  &__item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+
+    &[open] .faq__q .material-icons {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    .material-icons {
+      color: var(--color-primary);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &__a {
+    padding: 0 1.25rem 1.25rem;
+    color: var(--color-muted);
+    font-size: 0.98rem;
+  }
+}
